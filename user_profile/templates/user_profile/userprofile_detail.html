@@ -1,0 +1,74 @@
+{% extends "base_generic.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block title %}
+    User Profile
+{% endblock title %}
+{% block content %}
+    <div class="row align-items-md-stretch py-4">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <div class="text-center">
+                {% if user.userprofile.picture %}
+                    <img src="{{ user.userprofile.picture.url }}"
+                         alt="Profile Picture"
+                         class="rounded-circle img-thumbnail"
+                         height="auto"
+                         width="auto">
+                {% else %}
+                    <img src="{% static 'img/user-icon.png' %}"
+                         alt="Profile Picture"
+                         class="rounded-circle img-thumbnail"
+                         height="auto"
+                         width="auto">
+                {% endif %}
+                <p>
+                    {% if user.userprofile.is_paid or user.userprofile.is_free %}
+                        <span class="badge bg-success">
+                            {% if user.userprofile.is_paid %}Paid Account{% endif %}
+                            {% if user.userprofile.is_free %}Free Account{% endif %}
+                        </span>
+                    {% else %}
+                        <span class="badge bg-success">Unassigned User</span>
+                    {% endif %}
+                </p>
+
+            </div>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <div class="row align-items-md-stretch py-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <ul>
+                <li>First Name: {{ user.first_name }}</li>
+                <li>Last Name: {{ user.last_name }}</li>
+                <li>Email: {{ user.email }}</li>
+                <li>Age: {{ user.userprofile.age }}</li>
+                <li>Gender: {{ user.userprofile.get_gender_display }}</li>
+                <li>Phone Number: {{user.userprofile.phone_number}}</li>
+                <li>Street Address: {{user.userprofile.street_address}}</li>
+                <li>City: {{user.userprofile.city}}</li>
+                <li>State: {{user.userprofile.state}}</li>
+                <li>About Me: {{user.userprofile.about_me}}</li>
+            </ul>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row align-items-md-stretch">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a class="btn btn-primary"
+               role="button"
+               href="{% url 'user_profile:profile_update' %}">
+                <i class="fa-solid fa-edit"></i> Update Profile
+            </a>
+            <a class="btn btn-warning"
+               role="button"
+               href="{% url 'password_change' %}">
+                <i class="fa-solid fa-user-cog"></i> Change password
+            </a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block style %}
+{% endblock style %}
+{% block title %}
+    Wireframes
+{% endblock title %}
+{% block content %}
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static "img/HomePageWireframe.png" %}" class="d-block w-100" alt="Homepage" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/AboutUsWireframe.png" %}" class="d-block w-100" alt="AboutUs" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/LogInWireframe.png" %}" class="d-block w-100" alt="LogIn" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/ChangePasswordWireframe.png" %}" class="d-block w-100" alt="ChangePassword" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/SignUpWireframe.png" %}" class="d-block w-100" alt="SignUp" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/EditProfileWireframe.png" %}" class="d-block w-100" alt="EditProfile" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/CheckCalendarWireframe.png" %}" class="d-block w-100" alt="CheckCalendar" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/AddCalendarWireframe.png" %}" class="d-block w-100" alt="AddCalendar" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/LoggedInDashboardWireframe.png" %}" class="d-block w-100" alt="LoggedIn" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/CheckProfileWireframe.png" %}" class="d-block w-100" alt="CheckProfile" height="auto" width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/ProductivityReportWireframe.png" %}" class="d-block w-100" alt="ProductivityReport" height="auto"width="auto">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/ChangePreferancesWireframe.png" %}" class="d-block w-100" alt="ChangePreferances" height="auto" width="auto">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock content %}

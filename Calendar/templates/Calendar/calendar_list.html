@@ -1,0 +1,57 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    Available calendars
+{% endblock title %}
+
+{% block content %}
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            {% if object_list %}
+                <ol>
+                    {% for calendar in object_list %}
+                        <li>
+                            <a href="{% url 'calendar:calendar-detail' calendar.id %}">{{ calendar.calendar_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>No calendars are available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="text-center">
+                {% if user.is_authenticated %}
+                    {% if user.userprofile.is_paid %}
+                        <!-- Paid users can always create a calendar -->
+                        <a class="btn btn-warning" href="{% url 'calendar:create-calendar' %}">
+                            <i class="fa-solid fa-plus"></i> Create calendar
+                        </a>
+                    {% elif user.userprofile.is_free %}
+                            <a class="btn btn-warning" href="{% url 'calendar:create-calendar' %}">
+                                <i class="fa-solid fa-plus"></i> Create calendar
+                            </a>
+                    {% else %}
+                        {% if not user.calendar_set.exists %}
+                                <!-- Free users can create a calendar if they don't already have one -->
+                                <a class="btn btn-warning" href="{% url 'calendar:create-calendar' %}">
+                                    <i class="fa-solid fa-plus"></i> Create calendar
+                                </a>
+                            {% else %}
+                                <!-- Free users with an existing calendar have a disabled button -->
+                                <a class="btn btn-warning disabled"
+                                href="#"
+                                role="button"
+                                aria-disabled="true">
+                                    <i class="fa-solid fa-plus"></i> Create calendar
+                                </a>
+                            {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

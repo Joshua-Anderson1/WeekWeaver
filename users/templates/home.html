@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="py-5">
+            <h1 class="display-3 fw-bold">WeekWeaver</h1>
+            <p>WeekWeaver is a dynamic scheduling tool designed to help users effortlessly plan and manage their week.
+            With an intuitive interface, users can create, organize, and prioritize tasks, appointments, and events, ensuring a balanced and productive week.
+            Whether for personal use or team collaboration, WeekWeaver empowers users to visualize their commitments, set reminders, and adapt to changing schedules seamlessly.</p>
+            <p class="col-md-8 fs-4">
+                <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a>
+            </p>
+        </div>
+    </div>
+    <div class="py-5">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light rounded-3">
+                    <p>This software uses generative AI to give you the most productive week possible.
+                    With the ability to add deadlines, set priorities for tasks, and change your calendar on demand, you can
+                    make a new calendar quickly with the support of AI.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light rounded-3">
+                    <p>Plan your week around you. Don't limit yourself to just planning out tasks for work. Use
+                    WeekWeaver to plan out tasks at home too such as painting, cleaning, cooking, or even integrate reading time into your week.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

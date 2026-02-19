@@ -1,0 +1,117 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark justify-content-between">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static "img/WeekWeaverLogo.png" %}" alt="WeekWeaver" height="30"width="30">
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="#navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        <i class="fa-solid fa-circle-info"></i> About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'team' %}">
+                        <i class="fa-solid fa-people-group"></i> Team
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'wireframes' %}">
+                        <i class="fa-regular fa-note-sticky"></i> Wireframes
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tasks:task-list' %}">
+                            Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'calendar:calendar-list' %}">
+                            Calendars
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            Calendars
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="#navbarsExampleDefault">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           role="button"
+                           data-toggle="dropdown"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            {% if user.picture %}
+                                <img src="{{ user.picture.url }}"
+                                     alt="Profile Picture"
+                                     class="rounded-circle img-thumbnail"
+                                     height="30"
+                                     width="30">
+                            {% else %}
+                                <img src="{% static 'img/user-icon.png' %}"
+                                     alt="Profile Picture"
+                                     class="rounded-circle img-thumbnail"
+                                     height="30"
+                                     width="30">
+                            {% endif %}
+                            {{ user.email }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'user_profile:profile_detail' %}">
+                                    <i class="fa-solid fa-user-cog"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fa-solid fa-sign-out-alt"></i> Log out
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fa-solid fa-sign-in"></i> Sign in
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:signup' %}">
+                            <i class="fa-solid fa-user-edit"></i> Sign up
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

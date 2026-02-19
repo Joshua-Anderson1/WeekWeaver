@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% block title %}
+    Available Tasks
+{% endblock title %}
+{% block content %}
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            {% if object_list %}
+                <ol>
+                    {% for tasks in object_list %}
+                        <li>
+                            <a href="{% url 'tasks:task-details' tasks.id %}">{{ tasks.task_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>No tasks are available.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="text-center">
+                <a class="btn btn-warning"
+                    href="{% url 'tasks:create-task' %}"
+                    role="button"
+                    aria-disabled="true">
+                    <i class="fa-solid fa-plus"></i> Create Task
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
