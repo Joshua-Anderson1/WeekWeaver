@@ -1,19 +1,6 @@
-# Project Title
+# WeekWeaver
 
-**Insert project description here**
-
-**Change the URLs of the deployed app on Render**
-
-The project is deployed on Render:
-[https://django-project-template.onrender.com](https://django-project-template.onrender.com)
-
-To develop the Django application, clone this repository and follow the instructions:
-
-## What's Already Included in the Django Template?
-
--   User Authentication System:
-    -   [Login](https://django-project-template.onrender.com/accounts/login/)
-    -   [User Registration](https://django-project-template.onrender.com/accounts/signup/)
+**An app to create a calendar and organize tasks for you based upon importance and time of tasks**
 
 ## Create Python Virtual Environment
 
